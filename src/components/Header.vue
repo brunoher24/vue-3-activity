@@ -1,16 +1,23 @@
 <template>
   <div class="header">
     <header id="page-header">
-      <h1>Page with Vue logic</h1>
+      <h1>Mon super site</h1>
       <nav>
         <ul>
-          <li 
-          :class="{ active: selected === 'home' }">
-            <RouterLink @click="selected = 'home'" to="/">Accueil</RouterLink>
+          <li :class="{ active: selected === 'home' }">
+            <RouterLink @click="selected = 'home'" to="/">
+              Accueil
+              <!-- Add Icons using String format -->
+              <font-awesome-icon
+                class="home-icon"
+                icon="fa-solid fa-home-alt"
+              ></font-awesome-icon>
+            </RouterLink>
           </li>
-          <li  
-          :class="{ active: selected === 'about' }">
-            <RouterLink  @click="selected = 'about'" to="/a-propos">A propos</RouterLink>
+          <li :class="{ active: selected === 'about' }">
+            <RouterLink @click="selected = 'about'" to="/a-propos"
+              >A propos</RouterLink
+            >
           </li>
         </ul>
       </nav>
@@ -29,6 +36,12 @@ export default {
 </script>
 
 <style scoped>
+.home-icon {
+    font-size: 14px;
+    padding-bottom: 1px;
+    padding-left: 5px;
+}
+
 #page-header {
   display: flex;
   justify-content: space-between;
