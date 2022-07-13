@@ -1,38 +1,18 @@
 <script>
 import Post from "@/components/Post.vue";
+import { PostService } from "@/services/postService.js"
 
 export default {
-  components: { Toto: Post },
+  components: { Post },
   data() {
     return {
       posts: [],
     };
   },
   mounted() {
-    let id = 1;
-    this.posts = [
-      {
-        id: ++id,
-        authorImg: "https://via.placeholder.com/600/771796",
-        authorFullname: "Jean Dupont",
-        title: "Super post 1",
-        content: "Super contenu 1",
-      },
-      {
-        id: ++id,
-        authorImg: "https://via.placeholder.com/600/771796",
-        authorFullname: "Pierre Durand",
-        title: "Super post 2",
-        content: "Super contenu 2",
-      },
-      {
-        id: ++id,
-        authorImg: "https://via.placeholder.com/600/771796",
-        authorFullname: "Emilie Dupont",
-        title: "Super post 3",
-        content: "Super contenu 3",
-      },
-    ];
+    PostService.readAll().then(posts => {
+      this.posts = posts;
+    });
   },
 };
 </script>
@@ -44,19 +24,17 @@ export default {
     <ul>
       <li v-for="post in posts" :key="post.id">
 
-        {{ post.id}}
-        <Toto>
+        <Post>
           <template #author-image>
             <img src="https://via.placeholder.com/600/771796" alt="" />
           </template>
 
           <template #author-fullname>Bruno Héritier</template>
 
-          <template #post-title> Super titre </template>
+          <template #post-title> {{ post.title }} </template>
 
-          Est rerum tempore vitae\nsequi sint nihil reprehenderit dolor beatae
-          ea dolores neque\nfugiat blanditiis voluptate porro
-        </Toto>
+         {{ post.body }}
+        </Post>
       </li>
     </ul>
   </main>
