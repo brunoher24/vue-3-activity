@@ -3,6 +3,9 @@ import { createApp } from "vue";
 import App from "./App.vue";
 import router from "./router";
 
+
+// source : https://fontawesome.com/docs/web/use-with/vue/add-icons
+
 /* import the fontawesome core */
 import { library } from '@fortawesome/fontawesome-svg-core'
 /* import font awesome icon component */

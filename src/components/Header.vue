@@ -5,7 +5,7 @@
       <nav>
         <ul>
           <li :class="{ active: selected === 'home' }">
-            <RouterLink @click="selected = 'home'" to="/">
+            <RouterLink @click="setSelected('home')" to="/">
               Accueil
               <!-- Add Icons using String format -->
               <font-awesome-icon
@@ -14,8 +14,12 @@
               ></font-awesome-icon>
             </RouterLink>
           </li>
+          <li :class="{ active: selected === 'posts-feed' }">
+            <RouterLink @click="setSelected('posts-feed')" to="/dernieres-publications"
+              >Articles</RouterLink>
+          </li>
           <li :class="{ active: selected === 'about' }">
-            <RouterLink @click="selected = 'about'" to="/a-propos"
+            <RouterLink @click="setSelected('about')" to="/a-propos"
               >A propos</RouterLink
             >
           </li>
@@ -25,6 +29,26 @@
   </div>
 </template>
 
+
+<script setup>
+    import { ref, onMounted } from 'vue'
+
+    // reactive state
+    const selected = ref("home")
+
+    // functions that mutate state and trigger updates
+    function setSelected(value) {
+        selected.value = value;
+    }
+
+    // lifecycle hooks
+    onMounted(() => {
+        console.log(`Au chargement du composant, 
+        "selected" a pour valeur ${selected.value}.`)
+    })
+</script> 
+
+<!-- 
 <script>
 export default {
   data() {
@@ -32,8 +56,19 @@ export default {
       selected: "home",
     };
   },
+  mounted() {
+    console.log(`Au chargement du composant, 
+    "selected" a pour valeur ${this.selected}.`)
+  },
+
+  methods: {
+    setSelected(value) {
+        this.selected = value;
+    }
+  }
+  
 };
-</script>
+</script> -->
 
 <style scoped>
 .home-icon {
