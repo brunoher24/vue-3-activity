@@ -21,7 +21,7 @@ export default {
   <main>
     <h1>Dernières publications...</h1>
 
-    <ul>
+    <ul id="posts-feed-list">
       <li v-for="post in posts" :key="post.id">
 
         <Post>
@@ -29,7 +29,7 @@ export default {
             <img src="https://via.placeholder.com/600/771796" alt="" />
           </template>
 
-          <template #author-fullname>Bruno Héritier</template>
+          <template #author-fullname>{{post.authorFullName}}</template>
 
           <template #post-title> {{ post.title }} </template>
 
@@ -39,3 +39,19 @@ export default {
     </ul>
   </main>
 </template>
+
+<style>
+  #posts-feed-list {
+    width: 98%;
+    max-width: 681px;
+    margin: 30px auto
+  }
+
+  #posts-feed-list li:nth-child(odd){
+    margin-left: 30px;
+  }
+
+  #posts-feed-list li:nth-child(even){
+    margin-right: 30px;
+  }
+</style>

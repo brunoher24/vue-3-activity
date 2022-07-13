@@ -21,8 +21,7 @@
         box-shadow: 1px 1px 4px silver;
         border-radius: 4px;
         padding: 15px;
-        margin: 10px;
-        width: 98%;
+        margin: 10px 0;
     }
 
     .post-top-infos {
