@@ -24,16 +24,12 @@ export default {
     <ul id="posts-feed-list">
       <li v-for="post in posts" :key="post.id">
 
-        <Post>
-          <template #author-image>
-            <img src="https://via.placeholder.com/600/771796" alt="" />
-          </template>
-
+        <Post :authorFullName="post.authorFullName" :authorImageUrl="post.authorImageUrl">
           <template #author-fullname>{{post.authorFullName}}</template>
 
           <template #post-title> {{ post.title }} </template>
 
-         {{ post.body }}
+          {{ post.body }}
         </Post>
       </li>
     </ul>
