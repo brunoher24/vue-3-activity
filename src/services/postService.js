@@ -29,5 +29,25 @@ export const PostService = {
           } catch (error) {
             console.error(error);
           }
-    }    
+    },
+    
+    async readOne(postId) {
+      try {
+          const responsePost = await axios.get('https://jsonplaceholder.typicode.com/posts/' + postId);
+          const users = await UserService.readAll();
+          const post = responsePost.data;
+          const user = users.find(user => user.id === post.userId);
+          post.authorFullName = user.name;
+          if(user.imageUrl) {
+            post.authorImageUrl = user.imageUrl
+          } else {
+            post.authorInitials = user.name.split(/[\- ]/).map(part => part[0].toUpperCase()).join(" ");
+          }
+         
+          return post;
+
+        } catch (error) {
+          console.error(error);
+        }
+  }
 }

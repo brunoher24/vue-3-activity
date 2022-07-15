@@ -1,6 +1,6 @@
 <script>
 import Post from "@/components/Post.vue";
-import { PostService } from "@/services/postService.js"
+import { PostService } from "@/services/postService.js";
 
 export default {
   components: { Post },
@@ -10,7 +10,7 @@ export default {
     };
   },
   mounted() {
-    PostService.readAll().then(posts => {
+    PostService.readAll().then((posts) => {
       this.posts = posts;
     });
   },
@@ -23,31 +23,40 @@ export default {
 
     <ul id="posts-feed-list">
       <li v-for="post in posts" :key="post.id">
+        <RouterLink :to="'/article-details/'+ post.id">
+          <Post
+            :authorFullName="post.authorFullName"
+            :authorImageUrl="post.authorImageUrl"
+          >
+            <template #author-fullname>{{ post.authorFullName }}</template>
 
-        <Post :authorFullName="post.authorFullName" :authorImageUrl="post.authorImageUrl">
-          <template #author-fullname>{{post.authorFullName}}</template>
+            <template #post-title> {{ post.title }} </template>
 
-          <template #post-title> {{ post.title }} </template>
-
-          {{ post.body }}
-        </Post>
+            {{ post.body }}
+          </Post>
+        </RouterLink>
       </li>
     </ul>
   </main>
 </template>
 
 <style>
-  #posts-feed-list {
-    width: 98%;
-    max-width: 681px;
-    margin: 30px auto
-  }
+#posts-feed-list {
+  width: 98%;
+  max-width: 681px;
+  margin: 30px auto;
+}
 
-  #posts-feed-list li:nth-child(odd){
-    margin-left: 30px;
-  }
+#posts-feed-list a {
+  text-decoration: none;
+  color: black
+}
 
-  #posts-feed-list li:nth-child(even){
-    margin-right: 30px;
-  }
+#posts-feed-list li:nth-child(odd) {
+  margin-left: 30px;
+}
+
+#posts-feed-list li:nth-child(even) {
+  margin-right: 30px;
+}
 </style>

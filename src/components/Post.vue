@@ -3,7 +3,7 @@
     <article>
          <div class="post-top-infos">
             <img v-if="authorImageUrl" :src="authorImageUrl" alt="" >
-            <div v-else class="post-author-initials">{{ postAuthorInitials }}</div>
+            <div v-else class="author-initials">{{ postAuthorInitials }}</div>
             <span class="post-written-by-text">Rédigé par</span>
             <slot name="author-fullname"></slot>
          </div>
@@ -37,7 +37,7 @@ export default {
 </script>
 
 
-<style>
+<style scoped>
     .post {
         background-color: #f8f8f8;
         box-shadow: 1px 1px 4px silver;
@@ -50,7 +50,7 @@ export default {
         display: flex;
         align-items: center;
     }
-    .post-top-infos img, .post-top-infos .post-author-initials {
+    .post-top-infos img {
         width: 40px;
         height: 40px;
         border-radius: 50%;
@@ -60,16 +60,6 @@ export default {
 
     .post-top-infos img {
         object-fit: cover;
-    }
-
-    .post-top-infos .post-author-initials {
-        font-size: 14px;
-        color: white;
-        overflow: hidden;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background-color: grey;
     }
 
     .post-written-by-text {

@@ -20,8 +20,7 @@
           </li>
           <li :class="{ active: selected === 'about' }">
             <RouterLink @click="setSelected('about')" to="/a-propos"
-              >A propos</RouterLink
-            >
+              >A propos</RouterLink>
           </li>
         </ul>
       </nav>

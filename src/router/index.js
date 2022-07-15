@@ -1,6 +1,8 @@
 import { createRouter, createWebHistory } from "vue-router";
 import HomeView from "../views/HomeView.vue";
 import PostsFeedView from "../views/PostsFeedView.vue";
+import PostDetailsView from "../views/PostDetailsView.vue";
+
 import AboutView from "../views/AboutView.vue";
 
 
@@ -16,6 +18,11 @@ const router = createRouter({
       path: "/dernieres-publications",
       name: "posts-feed",
       component: PostsFeedView,
+    },
+    {
+      path: "/article-details/:postId",
+      name: "post-details",
+      component: PostDetailsView,
     },
     {
       path: "/a-propos",
